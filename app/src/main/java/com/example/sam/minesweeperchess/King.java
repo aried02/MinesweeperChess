@@ -35,8 +35,8 @@ public class King extends Piece {
             for (int j = 0; j < 8; j++) {
                 if(board.boardModelData[i][j] != null){
                     //System.out.println("Piece not null.");
-                    if(board.boardModelData[i][j].canMoveToLocation(prospectiveX, prospectiveY)){
-                        if(board.boardModelData[i][j].color != this.color){
+                    if(board.boardModelData[i][j].color != this.color){
+                        if(board.boardModelData[i][j].canMoveToLocation(prospectiveX, prospectiveY)){
                             return true;
                         }
                     }
