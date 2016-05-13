@@ -30,33 +30,10 @@ public class Queen extends Piece {
 
         xIter = xPos;
         yIter = yPos;
-        boolean xDecreasing = xPos > prospectiveX;
-        boolean yDecreasing = yPos > prospectiveY;
-
-        //check which direction the bishop is moving
-        if(xDecreasing && yDecreasing){
-            xInc = yInc = -1;
-        }else if(!xDecreasing && yDecreasing){
-            xInc = 1;
-            yInc = -1;
-        }else if(xDecreasing && !yDecreasing){
-            xInc = -1;
-            yInc = 1;
-        }else if(!xDecreasing && !yDecreasing){
-            xInc = yInc = 1;
-        }else if(xDecreasing && (yPos == prospectiveY)){
-            xInc = -1;
-            yInc = 0;
-        }else if(!xDecreasing && (yPos == prospectiveY)){
-            xInc = 1;
-            yInc = 0;
-        }else if(yDecreasing && (xPos == prospectiveX)){
-            xInc = 0;
-            yInc = -1;
-        }else{
-            xInc = 0;
-            yInc = 1;
-        }
+        int xDiff = prospectiveX - xPos;
+        int yDiff = prospectiveY - yPos;
+        xInc = xDiff/Math.abs(xDiff);
+        yInc = yDiff/Math.abs(yDiff);
 
         //iterate through every value between here and there, check if square is occupied
         while(xIter != prospectiveX && yIter != prospectiveY){
@@ -72,7 +49,7 @@ public class Queen extends Piece {
         return false;
     }
 
-    //checks if initial square choice is legal for queen without considering other pieces. just check this at the beginnign, run movesThroughPiece, and should be fine
+    //checks if initial square choice is legal for queen without considering other pieces. just check this at the beginning, run movesThroughPiece, and should be fine
     private boolean legalMoveForQueen(int prospectiveX, int prospectiveY){
         return (Math.abs(xPos - prospectiveX) == Math.abs(yPos - prospectiveY)) || (xPos == prospectiveX || yPos == prospectiveY);
     }
