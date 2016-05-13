@@ -31,21 +31,11 @@ public class Bishop extends Piece {
 
         xIter = xPos;
         yIter = yPos;
-        boolean xDecreasing = xPos > prospectiveX;
-        boolean yDecreasing = yPos > prospectiveY;
-
-        //check which direction the bishop is moving
-        if(xDecreasing && yDecreasing){
-            xInc = yInc = -1;
-        }else if(!xDecreasing && yDecreasing){
-            xInc = 1;
-            yInc = -1;
-        }else if(xDecreasing && !yDecreasing){
-            xInc = -1;
-            yInc = 1;
-        }else{
-            xInc = yInc = 1;
-        }
+        int xDiff = prospectiveX - xPos;
+        int yDiff = prospectiveY - yPos;
+        xInc = xDiff/Math.abs(xDiff);
+        yInc = yDiff/Math.abs(yDiff);
+        
 
         //iterate through every value between here and there, check if square is occupied
         while(xIter != prospectiveX && yIter != prospectiveY){
